@@ -1,0 +1,5 @@
+find . \( -name "*~" -o -name "#*#" \) -print -delete
+# comments deprecated
+# regex of two cases in a group that match from the end of the path ($)
+# .*~ - matches all paths that have a file that ends with a ~
+# .*/#.*# - matches all paths with files that start and end with #

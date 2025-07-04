@@ -1,0 +1,4 @@
+ls -tmp
+# t - sort by time
+# p - add / at the end of directories
+# m - one-line stream

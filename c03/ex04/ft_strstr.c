@@ -1,0 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/03 18:54:18 by sandrzej          #+#    #+#             */
+/*   Updated: 2025/07/03 20:27:19 by sandrzej         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+char	*ft_strstr(char *str, char *to_find)
+{
+	int		i;
+	int		j;
+	char	*s;
+
+	if (!(to_find[0]))
+		return (str);
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		if (!(to_find[j]))
+			return (s);
+		if (str[i] == to_find[j])
+		{
+			if (j == 0)
+				s = &str[i];
+			j++;
+		}
+		else if (str[i] != to_find[j])
+		{
+			j = 0;
+		}
+		i++;
+	}
+	return (0);
+}
