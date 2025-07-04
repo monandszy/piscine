@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
+
 char	*ft_strstr(char *str, char *to_find)
 {
 	int		i;
@@ -22,17 +24,22 @@ char	*ft_strstr(char *str, char *to_find)
 	j = 0;
 	while (str[i])
 	{
-		if (!(to_find[j]))
-			return (s);
 		if (str[i] == to_find[j])
 		{
 			if (j == 0)
 				s = &str[i];
 			j++;
+			if (!(to_find[j]))
+				return (s);
 		}
 		else if (str[i] != to_find[j])
 		{
 			j = 0;
+			if (str[i] == to_find[j])
+			{
+				s = &str[i];
+				j++;
+			}
 		}
 		i++;
 	}

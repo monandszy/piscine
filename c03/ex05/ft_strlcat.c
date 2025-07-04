@@ -19,7 +19,7 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	while (dest[l1])
 		l1++;
 	l2 = 0;
-	while (l2 < (size - 1))
+	while ((l2 + l1) < (size - 1))
 	{
 		if (src[l2] == '\0')
 			break ;
