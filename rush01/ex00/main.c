@@ -3,82 +3,90 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wszlaga <wszlaga@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/29 16:14:52 by wszlaga           #+#    #+#             */
-/*   Updated: 2025/07/01 10:37:52 by sandrzej         ###   ########.fr       */
+/*   Created: 2025/07/05 15:18:39 by sandrzej          #+#    #+#             */
+/*   Updated: 2025/07/05 23:53:51 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-extern int	g_rush_version;
-/* int	g_x;
-int	g_y;
-char	g_m1[];
-char	g_m2[]; */
+#include <unistd.h>
+#include <stdio.h>
 
-void	rush(int x, int y);
-/* void	rush00(int x, int y);
-void	rush01(int x, int y);
-void	rush02(int x, int y);
-void	rush03(int x, int y);
-void	rush04(int x, int y); */
-void	ft_putchar(char c);
-void	print_helper(char *message);
-/* void	choose_rush_version(void);*/
+extern int	g_top[4];
+extern int	g_btm[4];
+extern int	g_rig[4];
+extern int	g_lft[4];
 
-void	print_helper(char *message)
+// function order after compilation
+void	solve_matrix(void);
+void	print_msg(char *msg);
+int		validate(char *arg);
+void	assign_to_side(int pos, int arg);
+// main 
+
+void	assign_to_side(int pos, int arg)
 {
-	int	i;
+	int	side;
+	int	index;
 
-	i = 0;
-	while (message[i])
-	{
-		ft_putchar(message[i]);
-		i++;
-	}
+	pos = pos - 1;
+	side = (pos / 4);
+	index = (pos % 4);
+	if (side == 0)
+		g_top[index] = arg;
+	else if (side == 1)
+		g_btm[index] = arg;
+	else if (side == 2)
+		g_lft[index] = arg;
+	else if (side == 3)
+		g_rig[index] = arg;
+	else
+		print_msg("GRAVE ERROR");
 }
 
-int	extract_int(char *arr)
+int	validate(char *arg)
 {
-	int	i;
-	int	num;
-
-	i = 0;
-	num = 0;
-	while (arr[i] != '\0')
+	if (arg[1] != '\0')
 	{
-		if (arr[i] >= 48 && arr[i] <= 57)
-		{
-			num = num * 10 + (arr[i] - 48);
-		}
-		i++;
+		print_msg("VALIDATION ERROR: size of input higher than 1\n");
+		return (1);
 	}
-	return (num);
+	else if (arg[0] > '4' && arg[0] <= '9')
+	{
+		print_msg("VALIDATION ERROR: number higher than 4\n");
+		return (1);
+	}
+	else if (!(arg[0] >= '0' && arg[0] <= '9'))
+	{
+		print_msg("VALIDATION ERROR: not a number\n");
+		return (1);
+	}
+	return (0);
 }
 
-int	main(int argc, char *argv[])
+int	main(int argc, char **argv)
 {
-	int	x;
-	int	y;
+	char	*arg;
+	int		pos;
 
-	if (&*argv[1] && &*argv[2] && &*argv[3])
+	pos = 1;
+	if (argc == 17)
 	{
-		x = extract_int(argv[2]);
-		y = extract_int(argv[3]);
-		g_rush_version = *argv[1] - '0';
-		if (g_rush_version < 5)
+		while (argv[pos])
 		{
-			rush(x, y);
+			arg = argv[pos];
+			if (validate(arg) == 1)
+				return (1);
+			assign_to_side(pos, (*arg - '0'));
+			pos++;
 		}
-		else
-		{
-			print_helper("Invalid number of {rush_version},");
-			print_helper(" please input a number from 0 to 4");
-		}
+		solve_matrix();
+		return (0);
 	}
 	else
 	{
-		print_helper("Incorrect input. ./{output_file} {rush_version} {x} {y}");
+		print_msg("INPUT ERROR: Argument count not 16\n");
+		return (1);
 	}
-	return (0);
 }
