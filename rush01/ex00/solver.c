@@ -6,12 +6,11 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 23:41:11 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/05 23:47:49 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/06 14:43:46 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 
 int	g_matrix[4][4];
 int	g_top[4];
@@ -19,17 +18,16 @@ int	g_btm[4];
 int	g_lft[4];
 int	g_rig[4];
 
-void	print_msg(char *msg);
+void	print_msg(void);
 int		*rev(int *arr);
 int		validate_visibility(int *arr);
 int		validate_row_col(int row, int col, int num);
 void	print_matrix(void);
-void	fill_null(void);
 int		check_matrix(void);
 int		brute_force(int pos);
 void	solve_matrix(void);
 
-int	check_visibilities(int *row, int *col)
+int	check_visibilities(int i, int *row, int *col)
 {
 	if (validate_visibility(col) != g_top[i])
 		return (1);
@@ -43,6 +41,7 @@ int	check_visibilities(int *row, int *col)
 		return (0);
 }
 
+// extracts row and column for a given i from the matrix
 int	check_matrix(void)
 {
 	int	i;
@@ -60,39 +59,60 @@ int	check_matrix(void)
 			col[j] = g_matrix[j][i];
 			j++;
 		}
-		return (check_visbilities(row, col));
+		if (check_visibilities(i, row, col) == 1)
+			return (1);
 		i++;
 	}
 	return (0);
 }
 
+// pos is from 0 to 15. If position is 16 the whole matrix is filled;
+// if check matrix returns 1, then
+// validate_row_col checks if the incrementing number can be put in the matrix,
+// checks if it is not present in the current row and column.
+// BF(0) -> BF(1) ... BF(15) -> BF(16)
+// BF(16) return 1; -> BF(15)
+// pos + 1 is not the same as pos++
+// if no 4 numbers are valid goes to the previous position (return 1)
+// if a number passes goes deeper to the next position (BF(next_position)
 int	brute_force(int pos)
 {
 	int	row;
 	int	col;
-	int	num;
+	int	input_num;
+	int	returned;
+	int	next_pos;
 
 	if (pos == 16)
 		return (check_matrix());
+	next_pos = pos + 1;
 	row = pos / 4;
 	col = pos % 4;
-	num = 1;
-	while (num <= 4)
+	input_num = 1;
+	while (input_num <= 4)
 	{
-		if (validate_row_col(row, col, num) == 0)
+		if (validate_row_col(row, col, input_num) == 0)
 		{
-			g_matrix[row][col] = num;
-			if (brute_force(pos + 1) == 0)
+			g_matrix[row][col] = input_num;
+			returned = brute_force(next_pos);
+			if (returned == 0)
 				return (0);
 			g_matrix[row][col] = 0;
 		}
-		num++;
+		input_num++;
 	}
 	return (1);
 }
 
+// INPUT ERROR: unable to solve with current sides, no possible combination
 void	solve_matrix(void)
 {
-	brute_force(0);
-	print_matrix();
+	if (brute_force(0) == 0)
+	{
+		print_matrix();
+	}
+	else
+	{
+		print_msg();
+	}
 }

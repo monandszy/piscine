@@ -32,6 +32,7 @@ int	main(void)
 	printf("%d", strcmp("cat", "Cat"));
 	printf("%d", strcmp("C", "cat"));
 	printf("%d", strcmp("cat", "C"));
+	printf("%d", strcmp("", ""));
 
 	printf("\ntesting ex01\n");
 	printf("%d", ft_strncmp("cat", "cat", 3));

@@ -6,7 +6,7 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 23:48:26 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/05 23:50:44 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/06 14:31:49 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,26 @@ extern int	g_matrix[4][4];
 
 int	validate_visibility(int *arr)
 {
-	int	max;
-	int	m_c;
-	int	i;
+	int	seen_max;
+	int	visibility;
+	int	current_pos;
 
-	max = 0;
-	m_c = 0;
-	i = 0;
-	while (i < 4)
+	seen_max = 0;
+	visibility = 0;
+	current_pos = 0;
+	while (current_pos < 4)
 	{
-		if (arr[i] > max)
+		if (arr[current_pos] > seen_max)
 		{
-			max = arr[i];
-			m_c++;
+			seen_max = arr[current_pos];
+			visibility++;
 		}
-		i++;
+		current_pos++;
 	}
-	return (m_c);
+	return (visibility);
 }
 
+// reverses int array, example 1234 to 4321
 int	*rev(int *arr)
 {
 	int	f;
@@ -54,14 +55,19 @@ int	*rev(int *arr)
 	return (arr);
 }
 
-int	validate_row_col(int row, int col, int num)
+// if number is already in row or col return 1
+// if I am checking the row, then I have to change / go through the colums (i)
+// if I am checking the column then I have to change / go through the rows (i)
+// position of cell is given by [row][col]
+// Checks both the column and the row at the same time
+int	validate_row_col(int row, int col, int input_num)
 {
 	int	i;
 
 	i = 0;
 	while (i < 4)
 	{
-		if (g_matrix[row][i] == num || g_matrix[i][col] == num)
+		if (g_matrix[row][i] == input_num || g_matrix[i][col] == input_num)
 		{
 			return (1);
 		}

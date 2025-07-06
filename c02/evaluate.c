@@ -61,7 +61,8 @@ int	main(void)
 	print_arr(strncpy(ex01dest4, ex01src4, 3));
 
 	printf("\n");
-	char ex01dest5[] = "";
+	// prints nothing
+	char ex01dest5[] = "cat";
 	char ex01src5[] = "";
 	print_arr(strcpy(ex01dest5, ex01src5));
 
@@ -132,4 +133,6 @@ int	main(void)
 	printf("\n---testing ex12---\n");
 	char c_mem[] = "1234567d\n\n\n\n\n\n\n\n\n\n1294295712502*(@*@#*!@@#890123456abcdefghijklmnouprstwxyzdkawiofjwiaunaunoiuguoigabghbagiuaefsefes32";
 	ft_print_memory(c_mem, sizeof(c_mem));
+	char c_mem2[] = "";
+	ft_print_memory(c_mem2, sizeof(c_mem2));
 }

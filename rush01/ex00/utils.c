@@ -6,7 +6,7 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 23:24:05 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/05 23:52:54 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/06 14:24:32 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 extern int	g_matrix[4][4];
 
-void	print_intarr(int *arr)
+/* void	print_intarr(int *arr)
 {
 	int		i;
 	char	c;
@@ -26,18 +26,21 @@ void	print_intarr(int *arr)
 		write(1, &c, 1);
 		i++;
 	}
-}
+} */
 
-void	print_msg(char *msg)
+void	print_msg(void)
 {
-	int	i;
+	int		i;
+	char	*msg;
 
+	msg = "Error";
 	i = 0;
 	while (msg[i])
 	{
 		write(1, &msg[i], 1);
 		i++;
 	}
+	write(1, "\n", 1);
 }
 
 void	print_matrix(void)
@@ -63,7 +66,7 @@ void	print_matrix(void)
 	}
 }
 
-void	fillnull(void)
+/* void	fillnull(void)
 {
 	int	i;
 	int	j;
@@ -79,4 +82,4 @@ void	fillnull(void)
 		}
 		i++;
 	}
-}
+} */
