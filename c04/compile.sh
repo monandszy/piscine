@@ -1,3 +1,4 @@
+rm -rf evaluate
 cc evaluate.c -o evaluate
 
 cp ../c01/ex06/* ./ex00/
@@ -39,5 +40,4 @@ cc -c -Wall -Wextra -Werror ft_atoi_base.c -o ex05.o
 norminette -R CheckForbiddenSourceHeader
 rm -rf ex05.o
 cd ..
-
 ./evaluate

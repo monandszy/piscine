@@ -6,7 +6,7 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:18:39 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/06 12:43:20 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/06 20:21:14 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ extern int	g_rig[4];
 extern int	g_lft[4];
 
 // function order after compilation
+// void	print_intarr(int *arr);
 void	solve_matrix(void);
 void	print_msg(void);
-int		validate(char *arg);
+int		validate(char arg, char spc, int pos);
 void	assign_to_side(int pos, int arg);
 // main 
 
@@ -31,7 +32,7 @@ void	assign_to_side(int pos, int arg)
 	int	side;
 	int	index;
 
-	pos = pos - 1;
+	pos = (pos / 2) + (pos % 2);
 	side = (pos / 4);
 	index = (pos % 4);
 	if (side == 0)
@@ -43,51 +44,80 @@ void	assign_to_side(int pos, int arg)
 	else if (side == 3)
 		g_rig[index] = arg;
 	else
-		print_msg();
+		write(1, "GRAVE", 5);
 }
 
+// VALIDATION ERROR: Input size higher than 32
+// VALIDATION ERROR: number separator not space or multiline argument
 // VALIDATION ERROR: size of input higher than 1
 // VALIDATION ERROR: number higher than 4
 // VALIDATION ERROR: not a number
-int	validate(char *arg)
+int	validate(char arg, char spc, int pos)
 {
-	if (arg[1] != '\0')
+	if (spc != ' ' && pos < 30)
 	{
-		print_msg();
 		return (1);
 	}
-	else if (arg[0] > '4' && arg[0] <= '9')
+	else if (arg > '4' && arg <= '9')
 	{
-		print_msg();
 		return (1);
 	}
-	else if (!(arg[0] >= '0' && arg[0] <= '9'))
+	return (0);
+}
+
+int	ft_str_is_numeric(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
 	{
-		print_msg();
-		return (1);
+		if (!((str[i] >= '0' && str[i] <= '9') || str[i] == ' '))
+		{
+			return (1);
+		}
+		i++;
 	}
+	return (0);
+}
+
+int	iterate_positions(char *args)
+{
+	int	pos;
+
+	pos = 0;
+	while (pos < 32)
+	{
+		if (validate(args[pos], args[pos + 1], pos) == 1)
+		{
+			print_msg();
+			return (1);
+		}
+		assign_to_side(pos, (args[pos] - '0'));
+		pos = pos + 2;
+	}
+	solve_matrix();
 	return (0);
 }
 
 // INPUT ERROR: Argument count not 16
 int	main(int argc, char **argv)
 {
-	char	*arg;
-	int		pos;
+	char	*args;
+	int		pos_c;
 
-	pos = 1;
-	if (argc == 17)
+	if (argc == 2)
 	{
-		while (argv[pos])
+		args = argv[1];
+		pos_c = 0;
+		while (args[pos_c])
+			pos_c++;
+		if (pos_c >= 32 || ft_str_is_numeric(args) == 1)
 		{
-			arg = argv[pos];
-			if (validate(arg) == 1)
-				return (1);
-			assign_to_side(pos, (*arg - '0'));
-			pos++;
+			print_msg();
+			return (1);
 		}
-		solve_matrix();
-		return (0);
+		iterate_positions(args);
 	}
 	else
 	{

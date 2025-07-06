@@ -1,3 +1,4 @@
+rm -rf evaluate
 cc evaluate.c -o evaluate
 
 cd ex00

@@ -6,7 +6,7 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:30:00 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/03 23:15:07 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/06 16:51:39 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ int	convert_atoi(int m_c, int i, char *arr)
 	int		num;
 
 	num = 0;
-
-	printf("[%d, %s]", num, arr);
 	while (arr[i])
 	{
 		if (arr[i] >= '0' && arr[i] <= '9')
@@ -41,13 +39,12 @@ int	ft_atoi(char *str)
 	m_c = 0;
 	while (str[i])
 	{
-		printf("{%d}", i);
 		if (str[i] == ' ')
 		{
 		}
 		else if (str[i] == '-')
 			m_c++;
-		else if (str[i] >= '0' && str[i] <= 9)
+		else if (str[i] >= '0' && str[i] <= '9')
 			return (convert_atoi(m_c, i, str));
 		else if (str[i] != '+')
 			break ;

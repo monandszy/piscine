@@ -6,17 +6,18 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 15:10:00 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/03 11:00:52 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/06 17:05:01 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
+char	g_hex[16];
+
 // add printing last as 0 only (for first line and other i+16)
 void	get_hex(unsigned long mem, int i)
 {
 	unsigned long	base;
-	char			hex[16];
 	int				mod;
 	int				j;
 
@@ -26,16 +27,16 @@ void	get_hex(unsigned long mem, int i)
 	{
 		mod = mem % base;
 		if (mod >= 0 && mod <= 9)
-			hex[i] = '0' + mod;
+			g_hex[i] = '0' + mod;
 		else if (mod >= 10 && mod <= 15)
-			hex[i] = 'a' + (mod % 10);
+			g_hex[i] = 'a' + (mod % 10);
 		mem = mem / base;
 		i--;
 	}
 	i = 0;
 	while (i <= j)
 	{
-		write(1, &hex[i], 1);
+		write(1, &g_hex[i], 1);
 		i++;
 	}
 }
