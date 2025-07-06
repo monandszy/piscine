@@ -6,12 +6,11 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:18:39 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/06 20:21:14 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/06 20:54:44 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 
 extern int	g_top[4];
 extern int	g_btm[4];

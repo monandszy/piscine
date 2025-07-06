@@ -6,35 +6,58 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 17:10:11 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/06 20:19:49 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/06 22:11:12 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 
-void	print_in_base(int nbr, int base, char *en)
+void	print_in_base(int nbr, int base, char *encoding)
 {
-	if (nbr > base)
+	if (nbr >= base)
 	{
-		// go lower to the first one which 
-		print_in_base(nbr / base, base, en);
+		print_in_base(nbr / base, base, encoding);
 	}
-	printf("[%d]", nbr);
-	write(1, &en[nbr % base], 1);
+	write(1, &encoding[nbr % base], 1);
+}
+
+int	validate_duplication(char *base)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (base[i])
+	{
+		if (base[i] == '-' || base[i] == '+')
+			return (1);
+		while (base[j])
+		{
+			if (j != i && base[i] == base[j])
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
 
 void	ft_putnbr_base(int nbr, char *base)
 {
-	int	tmp;
 	int	size;
 
-	tmp = nbr;
 	size = 0;
+	if (validate_duplication(base) == 1)
+		return ;
 	while (base[size])
-	{
 		size++;
+	if (size < 2)
+		return ;
+	if (nbr < 0)
+	{
+		write(1, "-", 1);
+		nbr = -nbr;
 	}
-	printf("{%d, %d, %s}", nbr, size, base);
 	print_in_base(nbr, size, base);
 }
