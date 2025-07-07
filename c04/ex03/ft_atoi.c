@@ -6,7 +6,7 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:30:00 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/06 21:14:02 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:13:12 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@ int	convert_atoi(int m_c, int i, char *arr)
 	int		num;
 
 	num = 0;
+	while (arr[i])
+	{
+		if (!(arr[i] == '0'))
+			break ;
+		i++;
+	}
 	while (arr[i])
 	{
 		if (arr[i] >= '0' && arr[i] <= '9')

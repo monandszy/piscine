@@ -50,6 +50,7 @@ int	main(void)
 	printf("testing ex05\n");
 	printf("%d\n", ft_atoi_base(" -10wd", "01"));
 	printf("%d\n", ft_atoi_base(" --bb", "ab"));
+	printf("%d\n", ft_atoi_base(" -0000122", "01"));
 	printf("%d\n", ft_atoi_base("1000001", "01"));
 	printf("%d\n", ft_atoi_base("0a", "0123456789abcdef"));
 	printf("%d\n", ft_atoi_base("11111111111111111111111111", "01"));

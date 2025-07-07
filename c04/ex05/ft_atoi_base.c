@@ -6,7 +6,7 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 21:15:55 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/06 23:55:16 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:15:01 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 char	*g_en;
 char	*g_str;
 int		g_end;
+int		g_num;
 
 int	validate_encoding_duplication(void)
 {
@@ -105,9 +106,7 @@ int	terminate_invalid_str(void)
 int	ft_atoi_to_base(int b)
 {
 	int		m_c;
-	int		num;
 
-	num = 0;
 	m_c = 0;
 	while (*g_str)
 	{
@@ -120,17 +119,24 @@ int	ft_atoi_to_base(int b)
 			break ;
 		g_str++;
 	}
+	while (*g_str)
+	{
+		if (!(*g_str == g_en[0]))
+			break ;
+		g_str++;
+	}
 	g_end = terminate_invalid_str() - 1;
-	num = convert(g_end, b);
+	g_num = convert(g_end, b);
 	if (m_c % 2 == 1)
-		num = -num;
-	return (num);
+		g_num = -g_num;
+	return (g_num);
 }
 
 int	ft_atoi_base(char *str, char *base)
 {
 	int	size;
 
+	g_num = 0;
 	g_en = base;
 	g_str = str;
 	size = 0;
