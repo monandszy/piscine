@@ -6,24 +6,27 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 21:15:55 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/07 15:25:18 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:50:19 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*g_en;
 char	*g_str;
-int		g_end;
-int		g_num;
+long	g_end;
+long	g_num;
 
-int	validate_encoding_duplication(void)
+// #include <stdio.h>
+
+long	validate_encoding_duplication(void)
 {
-	int	i;
-	int	j;
+	long	i;
+	long	j;
 
 	i = 0;
 	j = 0;
 	while (g_en[i])
 	{
+		j = 0;
 		if (g_en[i] == '-' || g_en[i] == '+')
 			return (1);
 		while (g_en[j])
@@ -37,13 +40,13 @@ int	validate_encoding_duplication(void)
 	return (0);
 }
 
-//	printf("[b:%d, j:%d, i:%d, p:%d]", power, j, i, prev);
-//  printf("(%d, %c)", (g_end - i), g_str[g_end - i]);
-int	convert(int i, int b)
+//	prlongf("[b:%d, j:%d, i:%d, p:%d]", power, j, i, prev);
+//prlongf("(%d, %c)", (g_end - i), g_str[g_end - i]);
+long	convert(long i, long b)
 {
-	int	prev;
-	int	j;
-	int	power;
+	long	prev;
+	long	j;
+	long	power;
 
 	if (i > 0)
 		prev = convert(i - 1, b);
@@ -59,7 +62,7 @@ int	convert(int i, int b)
 	if (i == 0)
 		b = 1;
 	power = 1;
-	while (i > 1)
+	while (i > 0)
 	{
 		power = power * b;
 		i--;
@@ -74,11 +77,11 @@ int	convert(int i, int b)
 		i++;
 	} */
 
-int	terminate_invalid_str(void)
+long	terminate_invalid_str(void)
 {
-	int	i;
-	int	j;
-	int	flag;
+	long	i;
+	long	j;
+	long	flag;
 
 	i = 0;
 	while (g_str[i])
@@ -100,9 +103,9 @@ int	terminate_invalid_str(void)
 	return (i);
 }
 
-int	ft_atoi_to_base(int b)
+long	ft_atoi_to_base(long b)
 {
-	int		m_c;
+	long	m_c;
 
 	m_c = 0;
 	while (*g_str)
@@ -131,7 +134,7 @@ int	ft_atoi_to_base(int b)
 
 int	ft_atoi_base(char *str, char *base)
 {
-	int	size;
+	long	size;
 
 	g_num = 0;
 	g_en = base;
@@ -143,5 +146,5 @@ int	ft_atoi_base(char *str, char *base)
 		size++;
 	if (size < 2)
 		return (0);
-	return (ft_atoi_to_base(size));
+	return ((int)ft_atoi_to_base(size));
 }

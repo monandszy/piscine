@@ -6,11 +6,13 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 17:10:11 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/07 15:25:08 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:37:55 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+
+int	g_is_edge;
 
 void	print_in_base(int nbr, int base, char *encoding)
 {
@@ -30,6 +32,7 @@ int	validate_duplication(char *base)
 	j = 0;
 	while (base[i])
 	{
+		j = 0;
 		if (base[i] == '-' || base[i] == '+')
 			return (1);
 		while (base[j])
@@ -45,8 +48,10 @@ int	validate_duplication(char *base)
 
 void	ft_putnbr_base(int nbr, char *base)
 {
-	int	size;
+	int		size;
+	long	num;
 
+	num = (long)nbr;
 	size = 0;
 	if (validate_duplication(base) == 1)
 		return ;
@@ -54,10 +59,10 @@ void	ft_putnbr_base(int nbr, char *base)
 		size++;
 	if (size < 2)
 		return ;
-	if (nbr < 0)
+	if (num < 0)
 	{
 		write(1, "-", 1);
-		nbr = -nbr;
+		num = -num;
 	}
 	print_in_base(nbr, size, base);
 }

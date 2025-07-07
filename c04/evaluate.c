@@ -46,8 +46,12 @@ int	main(void)
 	printf("\n");
 	ft_putnbr_base(300, "0123456789ABCDEF");
 	printf("\n");
+	ft_putnbr_base(300, "abccde");
+	printf("\n");
+
 
 	printf("testing ex05\n");
+	printf("%d\n", ft_atoi_base("101101", "01"));
 	printf("%d\n", ft_atoi_base(" -10wd", "01"));
 	printf("%d\n", ft_atoi_base(" --bb", "ab"));
 	printf("%d\n", ft_atoi_base(" -0000122", "01"));
