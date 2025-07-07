@@ -6,12 +6,9 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 21:15:55 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/07 15:15:01 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:25:18 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
-#include <unistd.h>
 
 char	*g_en;
 char	*g_str;

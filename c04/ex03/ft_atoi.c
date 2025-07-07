@@ -6,11 +6,9 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:30:00 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/07 15:24:31 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:25:03 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 int	convert_atoi(int m_c, int i, char *arr)
 {
