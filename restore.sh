@@ -4,3 +4,7 @@ cp -p -- ./../evaluations/c00/* ./c00/
 cp -p -- ./../evaluations/c01/* ./c01/
 cp -p -- ./../evaluations/c02/* ./c02/
 cp -p -- ./../evaluations/c03/* ./c03/
+cp -p -- ./../evaluations/c04/* ./c04/
+cp -p -- ./../evaluations/c05/* ./c05/
+cp -p -- ./../evaluations/c05/* ./c05/
+cp -p -- ./../evaluations/c05/* ./c05/

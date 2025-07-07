@@ -1,3 +1,4 @@
+rm -rf evaluate
 cc evaluate.c -o evaluate
 
 cd ex00
@@ -55,3 +56,4 @@ rm -rf ex08.o
 cd ..
 
 ./evaluate
+rm -rf evaluate

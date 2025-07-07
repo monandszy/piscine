@@ -6,7 +6,7 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 21:15:55 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/07 15:50:19 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/07 19:43:13 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@ char	*g_en;
 char	*g_str;
 long	g_end;
 long	g_num;
+long	g_i;
+long	g_j;
 
 // #include <stdio.h>
 
@@ -79,28 +81,30 @@ long	convert(long i, long b)
 
 long	terminate_invalid_str(void)
 {
-	long	i;
-	long	j;
 	long	flag;
 
-	i = 0;
-	while (g_str[i])
+	while (*g_str)
 	{
-		j = 0;
+		if (!(*g_str == g_en[0]))
+			break ;
+		g_str++;
+	}
+	g_i = 0;
+	while (g_str[g_i])
+	{
+		g_j = 0;
 		flag = 0;
-		while (g_en[j])
+		while (g_en[g_j])
 		{
-			if (g_str[i] == g_en[j])
+			if (g_str[g_i] == g_en[g_j])
 				flag = 1;
-			j++;
+			g_j++;
 		}
 		if (flag == 0)
-		{
-			return (i);
-		}
-		i++;
+			return (g_i);
+		g_i++;
 	}
-	return (i);
+	return (g_i);
 }
 
 long	ft_atoi_to_base(long b)
@@ -119,15 +123,11 @@ long	ft_atoi_to_base(long b)
 			break ;
 		g_str++;
 	}
-	while (*g_str)
-	{
-		if (!(*g_str == g_en[0]))
-			break ;
-		g_str++;
-	}
 	g_end = terminate_invalid_str() - 1;
+	if (*g_str == g_str[g_end + 1])
+		return (0);
 	g_num = convert(g_end, b);
-	if (m_c % 2 == 1)
+	if (m_c % 2 == 1 && g_num != 0)
 		g_num = -g_num;
 	return (g_num);
 }

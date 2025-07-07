@@ -6,7 +6,7 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:30:00 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/07 15:25:03 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/07 19:28:05 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	convert_atoi(int m_c, int i, char *arr)
 			break ;
 		i++;
 	}
-	if (m_c % 2 == 1)
+	if (m_c % 2 == 1 && num != 0)
 		num = -num;
 	return (num);
 }

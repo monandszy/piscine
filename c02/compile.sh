@@ -80,3 +80,4 @@ rm -rf ex12.o
 cd ..
 
 ./evaluate
+rm -rf evaluate

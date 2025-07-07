@@ -6,7 +6,7 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 12:19:09 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/07 16:03:13 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/07 20:07:37 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 // guarantees string termination.
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	unsigned int	i;
 	unsigned int	l1;
+	unsigned int	l2;
 
-	i = 0;
-	while (i < (size - 1) && src[i])
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	l1 = i;
+	l1 = 0;
 	while (src[l1] != '\0')
-	{
 		l1++;
+	if (size == 0)
+		return (l1);
+	l2 = 0;
+	while (l2 < (size - 1) && src[l2] != '\0')
+	{
+		dest[l2] = src[l2];
+		l2++;
 	}
-	return (l1);
+	dest[l2] = '\0';
+	return (l2);
 }

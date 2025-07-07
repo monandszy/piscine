@@ -6,7 +6,7 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:18:39 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/06 20:54:44 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/07 18:35:26 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ int	iterate_positions(char *args)
 }
 
 // INPUT ERROR: Argument count not 16
+// 0-30 pos, 16 num 15 spc
+// if args[pos_c], and pos_c = 30 (last) pos_c will be 31
 int	main(int argc, char **argv)
 {
 	char	*args;

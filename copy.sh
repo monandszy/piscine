@@ -4,3 +4,7 @@ cp -p -- ./c00/* ./../evaluations/c00/ 2>/dev/null
 cp -p -- ./c01/* ./../evaluations/c01/ 2>/dev/null
 cp -p -- ./c02/* ./../evaluations/c02/ 2>/dev/null
 cp -p -- ./c03/* ./../evaluations/c03/ 2>/dev/null
+cp -p -- ./c04/* ./../evaluations/c04/ 2>/dev/null
+cp -p -- ./c05/* ./../evaluations/c05/ 2>/dev/null
+cp -p -- ./c06/* ./../evaluations/c06/ 2>/dev/null
+cp -p -- ./c07/* ./../evaluations/c07/ 2>/dev/null
