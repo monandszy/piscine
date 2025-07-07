@@ -6,7 +6,7 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 17:10:11 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/07 15:54:19 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:56:01 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	print_in_base(long nbr, long base, char *encoding)
 {
 	if (nbr >= base)
 	{
-		prlong_in_base(nbr / base, base, encoding);
+		print_in_base(nbr / base, base, encoding);
 	}
 	write(1, &encoding[nbr % base], 1);
 }

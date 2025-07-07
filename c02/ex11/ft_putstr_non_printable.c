@@ -6,7 +6,7 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 14:20:40 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/06 16:16:08 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/07 16:02:08 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_putstr_non_printable(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] >= 0 && str[i] <= 31)
+		if (str[i] <= 31)
 		{
 			to_hex(str[i]);
 		}
@@ -51,5 +51,4 @@ void	ft_putstr_non_printable(char *str)
 		}
 		i++;
 	}
-	to_hex(0);
 }
