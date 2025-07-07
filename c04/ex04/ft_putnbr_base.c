@@ -6,27 +6,27 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 17:10:11 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/07 15:37:55 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:54:19 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	g_is_edge;
+long	g_is_edge;
 
-void	print_in_base(int nbr, int base, char *encoding)
+void	print_in_base(long nbr, long base, char *encoding)
 {
 	if (nbr >= base)
 	{
-		print_in_base(nbr / base, base, encoding);
+		prlong_in_base(nbr / base, base, encoding);
 	}
 	write(1, &encoding[nbr % base], 1);
 }
 
-int	validate_duplication(char *base)
+long	validate_duplication(char *base)
 {
-	int	i;
-	int	j;
+	long	i;
+	long	j;
 
 	i = 0;
 	j = 0;
@@ -46,9 +46,9 @@ int	validate_duplication(char *base)
 	return (0);
 }
 
-void	ft_putnbr_base(int nbr, char *base)
+void	ft_putnbr_base(long nbr, char *base)
 {
-	int		size;
+	long	size;
 	long	num;
 
 	num = (long)nbr;
@@ -64,5 +64,5 @@ void	ft_putnbr_base(int nbr, char *base)
 		write(1, "-", 1);
 		num = -num;
 	}
-	print_in_base(nbr, size, base);
+	print_in_base(num, size, base);
 }

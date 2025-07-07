@@ -40,7 +40,7 @@ int	main(void)
 	printf("testing ex04\n");
 	ft_putnbr_base(127, "01");
 	printf("\n");
-	ft_putnbr_base(128, "01");
+	ft_putnbr_base(-128, "01");
 	printf("\n");
 	ft_putnbr_base(64, "abcd");
 	printf("\n");
