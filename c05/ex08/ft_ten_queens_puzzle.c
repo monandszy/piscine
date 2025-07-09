@@ -6,7 +6,7 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 12:32:37 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/09 14:21:54 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/09 15:19:39 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,18 @@ void	matrix_counter(void)
 	write(1, "\n", 1);
 }
 
-int	position_validate(int row, int col)
+int	is_valid(int mtrow, int mtcol, int ptrow, int ptcol)
+{
+	if ((mtrow >= 0 && ptcol < 10 && g_matrix[mtrow][ptcol] == '*')
+	|| (mtrow >= 0 && mtcol >= 0 && g_matrix[mtrow][mtcol] == '*')
+	|| (ptrow < 10 && mtcol >= 0 && g_matrix[ptrow][mtcol] == '*')
+	|| (ptrow < 10 && ptcol < 10 && g_matrix[ptrow][ptcol] == '*'))
+		return (1);
+	else
+		return (0);
+}
+
+int	validate_position(int row, int col)
 {
 	int	i;
 	int	mtrow;
@@ -60,10 +71,7 @@ int	position_validate(int row, int col)
 		ptrow++;
 		ptcol++;
 		if ((g_matrix[row][i] == '*' || g_matrix[i][col] == '*')
-		|| (mtrow >= 0 && ptcol < 10 && g_matrix[mtrow][ptcol] == '*')
-		|| (mtrow >= 0 && mtcol >= 0 && g_matrix[mtrow][mtcol] == '*')
-		|| (ptrow < 10 && mtcol >= 0 && g_matrix[ptrow][mtcol] == '*')
-		|| (ptrow < 10 && ptcol < 10 && g_matrix[ptrow][ptcol] == '*'))
+		|| (is_valid(mtrow, mtcol, ptrow, ptcol == 1)))
 			return (1);
 		i++;
 	}
@@ -80,10 +88,9 @@ int	nest(int col)
 		matrix_counter();
 		return (1);
 	}
-
 	while (row < 10)
 	{
-		if (position_validate(row, col) == 0)
+		if (validate_position(row, col) == 0)
 		{
 			g_matrix[row][col] = '*';
 			nest(col + 1);

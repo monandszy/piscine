@@ -6,7 +6,7 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:26:18 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/08 17:40:38 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/09 14:58:50 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ int	ft_recursive_power(int nb, int power)
 		return (0);
 	if (power == 0)
 		return (1);
-	return (nb * mult);
+	return (nb);
 }
