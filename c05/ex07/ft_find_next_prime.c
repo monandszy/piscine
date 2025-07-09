@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_find_next_prime.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/07 22:04:44 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/09 11:26:47 by sandrzej         ###   ########.fr       */
+/*   Created: 2025/07/09 11:40:28 by sandrzej          #+#    #+#             */
+/*   Updated: 2025/07/09 11:46:25 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-int	main(int argc, char**argv)
+int	ft_is_prime_ex07(int nb)
 {
-	char	*name;
-	int		i;
+	int	i;
 
-	i = 0;
-	name = argv[0];
-	if (argc >= 0)
+	if (nb < 2)
+		return (0);
+	i = 2;
+	while (i < ((nb / 2) + 1))
 	{
-		while (name[i])
-		{
-			write(1, &name[i], 1);
-			i++;
-		}
+		if (nb % i == 0)
+			return (0);
+		i++;
 	}
-	write(1, "\n", 1);
-	return (0);
+	return (1);
+}
+
+int	ft_find_next_prime(int nb)
+{
+	if (nb <= 1 || nb == 2)
+		return (2);
+	if (nb % 2 == 0)
+		nb++;
+	while (ft_is_prime_ex07(nb) == 0)
+	{
+		nb = nb + 2;
+	}
+	return (nb);
 }

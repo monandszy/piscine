@@ -43,6 +43,7 @@ int	main(void)
 	ft_putnbr_base(300, "abccde");
 	printf("\n");
 	ft_putnbr_base(0, "abc");
+	printf("\n");
 
 	printf("testing ex05\n");
 	printf("%d\n", ft_atoi_base("101101", "01"));

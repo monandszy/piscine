@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_recursive_power.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/07 22:04:44 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/09 11:26:47 by sandrzej         ###   ########.fr       */
+/*   Created: 2025/07/08 17:26:18 by sandrzej          #+#    #+#             */
+/*   Updated: 2025/07/08 17:40:38 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-int	main(int argc, char**argv)
+int	ft_recursive_power(int nb, int power)
 {
-	char	*name;
-	int		i;
+	int	mult;
 
-	i = 0;
-	name = argv[0];
-	if (argc >= 0)
+	mult = nb;
+	if (power > 1)
 	{
-		while (name[i])
-		{
-			write(1, &name[i], 1);
-			i++;
-		}
+		power--;
+		nb = ft_recursive_power(nb, power);
+		return (nb * mult);
 	}
-	write(1, "\n", 1);
-	return (0);
+	if (power < 0)
+		return (0);
+	if (power == 0)
+		return (1);
+	return (nb * mult);
 }

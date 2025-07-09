@@ -26,7 +26,7 @@ cd ex03
 cc -Wall -Wextra -Werror ft_sort_params.c -o ex03.o
 norminette -R CheckForbiddenSourceHeader
 chmod 777 ex03.o
-./ex03.o 1 00 9 3 4 5 2
-./ex03.o "avc" "wda" "avd" "avce" "avc"
+./ex03.o 1 00 9 3 4 5 2 | cat -e
+./ex03.o "avc" "wda" "avd" "avce" "avc" | cat -e
 rm -rf ex03.o
 cd ..

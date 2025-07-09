@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/07 22:04:44 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/09 11:26:47 by sandrzej         ###   ########.fr       */
+/*   Created: 2025/07/08 16:49:19 by sandrzej          #+#    #+#             */
+/*   Updated: 2025/07/08 17:11:41 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-int	main(int argc, char**argv)
+int	ft_iterative_factorial(int nb)
 {
-	char	*name;
-	int		i;
+	int	i;
+	int	f;
 
-	i = 0;
-	name = argv[0];
-	if (argc >= 0)
+	f = nb;
+	i = (nb - 1);
+	while (i > 0)
 	{
-		while (name[i])
-		{
-			write(1, &name[i], 1);
-			i++;
-		}
+		f = f * i;
+		i--;
 	}
-	write(1, "\n", 1);
-	return (0);
+	return (f);
 }
