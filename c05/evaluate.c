@@ -76,6 +76,6 @@ int	main(void)
 	printf("%d|", ft_find_next_prime(1200));
 
 	printf("\n---testing ex08\n");
-	printf("%d|", ft_ten_queens_puzzle(0));
+	printf("%d|", ft_ten_queens_puzzle());
 	return (0);
 }
