@@ -8,3 +8,6 @@ cp -p -- ./c04/* ./../evaluations/c04/ 2>/dev/null
 cp -p -- ./c05/* ./../evaluations/c05/ 2>/dev/null
 cp -p -- ./c06/* ./../evaluations/c06/ 2>/dev/null
 cp -p -- ./c07/* ./../evaluations/c07/ 2>/dev/null
+cp -p -- ./c08/* ./../evaluations/c08/ 2>/dev/null
+cp -p -- ./c09/* ./../evaluations/c09/ 2>/dev/null
+cp -p -- ./c10/* ./../evaluations/c10/ 2>/dev/null

@@ -6,7 +6,7 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 12:32:37 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/09 15:19:39 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/09 15:47:47 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	validate_position(int row, int col)
 		ptrow++;
 		ptcol++;
 		if ((g_matrix[row][i] == '*' || g_matrix[i][col] == '*')
-		|| (is_valid(mtrow, mtcol, ptrow, ptcol == 1)))
+		|| (is_valid(mtrow, mtcol, ptrow, ptcol) == 1))
 			return (1);
 		i++;
 	}

@@ -6,5 +6,8 @@ cp -p -- ./../evaluations/c02/* ./c02/
 cp -p -- ./../evaluations/c03/* ./c03/
 cp -p -- ./../evaluations/c04/* ./c04/
 cp -p -- ./../evaluations/c05/* ./c05/
-cp -p -- ./../evaluations/c05/* ./c05/
-cp -p -- ./../evaluations/c05/* ./c05/
+cp -p -- ./../evaluations/c06/* ./c06/
+cp -p -- ./../evaluations/c07/* ./c07/
+cp -p -- ./../evaluations/c08/* ./c08/
+cp -p -- ./../evaluations/c09/* ./c09/
+cp -p -- ./../evaluations/c10/* ./c10/

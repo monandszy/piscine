@@ -9,3 +9,6 @@ rm -f -- ./c04/* 2>/dev/null
 rm -f -- ./c05/* 2>/dev/null
 rm -f -- ./c06/* 2>/dev/null
 rm -f -- ./c07/* 2>/dev/null
+rm -f -- ./c08/* 2>/dev/null
+rm -f -- ./c09/* 2>/dev/null
+rm -f -- ./c10/* 2>/dev/null
