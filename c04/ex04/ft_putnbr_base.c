@@ -6,7 +6,7 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 17:10:11 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/09 12:14:20 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/10 15:58:14 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,15 @@ void	ft_putnbr_base(long nbr, char *base)
 		size++;
 	if (size < 2)
 		return ;
-	if (num < 0)
-	{
-		write(1, "-", 1);
-		num = -num;
-	}
-	else if (num == 0)
+	if (num == 0)
 	{
 		write(1, &base[0], 1);
 		return ;
+	}
+	else if (num < 0)
+	{
+		write(1, "-", 1);
+		num = -num;
 	}
 	print_in_base(num, size, base);
 }

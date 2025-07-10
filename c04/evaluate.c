@@ -40,6 +40,8 @@ int	main(void)
 	printf("\n");
 	ft_putnbr_base(300, "0123456789ABCDEF");
 	printf("\n");
+	ft_putnbr_base(16, "0123456789ABCDEF");
+	printf("\n");
 	ft_putnbr_base(300, "abccde");
 	printf("\n");
 	ft_putnbr_base(0, "abc");

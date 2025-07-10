@@ -4,25 +4,17 @@
 #include "ex01/ft_range.c"
 #include "ex02/ft_ultimate_range.c"
 #include "ex03/ft_strjoin.c"
-#include "ex04/ft_convert_base.c"
 #include "ex05/ft_split.c"
 
 void print_int(int *arr, int size)
 {
 	int i = 0;
-	char t;
 	while(i < size)
 	{
-		if (arr[i] < 0)
-		{
-			arr[i] = -arr[i];
-			write(1, "-", 1);
-		}
-		t = arr[i] + '0';
-		write(1, &t, 1);
+		printf("%d", arr[i]);
 		i++;
 	}
-	write(1, "\n", 1);		
+	printf("\n");
 }
 
 void print_matrix(int **matrix, int num_row, int num_col)
@@ -42,7 +34,7 @@ int main(void)
 	printf("--testing ex00\n");
 	char *str = "cat";
 	char *dup = ft_strdup(str);
-	printf("%s, %d, %d\n", dup, &str, &dup);
+	printf("%s, %lu, %lu\n", dup, sizeof(str), sizeof(dup));
 
 	printf("--testing ex01\n");
 	print_int(ft_range(0, 10), 10);
@@ -52,7 +44,24 @@ int main(void)
 //	print_int(ft_range(0, 0));
 
 	printf("--testing ex02\n");
-	int **range;
-	printf("s%d\n", ft_ultimate_range(range, 0, 10));
-	print_matrix(range, 1, 10);
+	int *range;
+	printf("s[%d]\n", ft_ultimate_range(&range, 0, 10));
+	print_int(range, 10);
+
+	int **range2;
+	printf("s[%d]\n", ft_ultimate_range(range2, 0, 10));
+	print_int(range2[0], 10);
+
+	printf("---testing ex03\n");
+	char *strs[] = {"cat", "in", "a" , "cup"};
+	printf("%s\n", ft_strjoin(5, strs, " "));
+	free(ft_strjoin(5, strs, " "));
+
+	printf("---testing ex04---\n");
+	char **split = ft_split("||||cat1||cat2||||cat3||||cat4||", "||");
+    printf("[%s]\n", g_split[0]);
+    printf("[%s]\n", g_split[1]);
+    printf("[%s]\n", g_split[2]);
+    printf("[%s]\n", g_split[3]);
+    printf("[%s]\n", g_split[4]);
 }

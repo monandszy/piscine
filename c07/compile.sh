@@ -26,10 +26,13 @@ rm -rf ex03.o
 cd ..
 
 cd ex04
-cc -c -Wall -Wextra -Werror ft_convert_base.c -o ex04.o
+cc -c -Wall -Wextra -Werror ft_convert_base.c ft_convert_base2.c -o ex04.o
 norminette -R CheckForbiddenSourceHeader
 rm -rf ex04.o
 cd ..
+cc 4main.c ex04/ft_convert_base.c ex04/ft_convert_base2.c -o 4main.o
+./4main.o
+rm -rf 4main.o
 
 cd ex05
 cc -c -Wall -Wextra -Werror ft_split.c -o ex05.o
