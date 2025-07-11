@@ -1,15 +1,25 @@
-typedef enum
-{
-	FALSE,
-	TRUE
-} t_bool;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_boolean.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/11 11:30:38 by sandrzej          #+#    #+#             */
+/*   Updated: 2025/07/11 12:01:43 by sandrzej         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-static inline int EVEN(int nbr)
-{
-	return (nbr % 2);
-}
-#define EVEN_MSG "I have an even number of arguments\n"
-#define ODD_MSG "I have an odd number of arguments\n"
-#define SUCCESS 0
-	
+#ifndef FT_BOOLEAN_H
+# define FT_BOOLEAN_H
 
+typedef int	t_bool;
+
+# define EVEN(nbr) (nbr % 2 ? TRUE : FALSE)
+# define TRUE 1
+# define FALSE 0
+# define EVEN_MSG "I have an even number of arguments\n"
+# define ODD_MSG "I have an odd number of arguments\n"
+# define SUCCESS 0
+
+#endif
