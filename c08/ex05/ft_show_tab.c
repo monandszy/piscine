@@ -6,12 +6,12 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:36:33 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/12 14:37:56 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/12 14:41:06 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_stock_str.h"
-#include <stdio.h>
+//#include "../ft_stock_str.h"
+//#include <stdio.h>
 #include <unistd.h>
 
 struct s_stock_str	*ft_strs_to_tab(int ac, char **av);
