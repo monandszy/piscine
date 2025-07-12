@@ -6,7 +6,7 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:59:22 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/12 12:27:53 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/12 12:41:33 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ char	*g_charset;
 char	**g_split;
 int		g_c;
 int		g_c_size;
+int		g_s_size;
 
 int	c_splitters(int i, int j, int s, int c)
 {
@@ -89,12 +90,17 @@ char	**ft_split(char *str, char *charset)
 	int	c;
 
 	g_c_size = 0;
+	g_s_size = 0;
 	while (charset[g_c_size])
-		g_c_size++;		
+		g_c_size++;
+	while (str[g_s_size])
+		g_s_size++;
 	g_str = str;
 	g_charset = charset;
 	c = 0;
-	if (g_c_size <= 0)
+//	if (g_c_size == 0 && g_c_size == 0)
+//		return ();
+	if (g_c_size == 0)
 	{
 		g_split = (char **) malloc((2) * sizeof(char *));
 		while (str[c])

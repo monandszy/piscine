@@ -6,7 +6,7 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 11:31:49 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/12 12:21:18 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/12 12:35:19 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,15 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 			j++;
 		}
 		i++;
+		j = 0;
 		if (i != size)
-			con[s] = *sep;
+		{
+			while (sep[j])
+			{
+				con[s] = sep[j];
+				j++;
+			}
+		}
 		s++;
 	}
 	return (con); 
