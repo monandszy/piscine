@@ -6,7 +6,7 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 10:46:13 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/12 11:39:02 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/12 12:03:20 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_ultimate_range(int **range, int min, int max)
 
 	if (min >= max)
 	{
-		range = NULL;
+		*range = NULL;
 		return (0);
 	}
 	size = -min + max;

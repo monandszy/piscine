@@ -45,23 +45,32 @@ int main(void)
 
 	printf("--testing ex02\n");
 	int *range;
-	printf("s[%d]\n", ft_ultimate_range(&range, 0, 10));
-	print_int(range, 10);
+	printf("s[%d]\n", ft_ultimate_range(&range, 0, 5));
+	print_int(range, 5);
 
-	int **range2;
-	printf("s[%d]\n", ft_ultimate_range(range2, 0, 10));
-	print_int(range2[0], 10);
+	int *range2;
+	printf("s[%d]\n", ft_ultimate_range(&range2, 0, 0));
+	printf("%p\n", range); // triggers seg fault
+
+	int *range3;
+	printf("s[%d]\n", ft_ultimate_range(&range3, -5, 5));
+	print_int(range3, 10);
+
 
 	printf("---testing ex03\n");
-	char *strs[] = {"cat", "in", "a" , "cup"};
-	printf("%s\n", ft_strjoin(5, strs, " "));
-	free(ft_strjoin(5, strs, " "));
+	char *strs[] = {"cat", "in", "a", "cup"};
+	printf("%s\n", ft_strjoin(4, strs, " "));
+	free(ft_strjoin(-5, strs, " "));
 
-	printf("---testing ex04---\n");
+	printf("---testing ex05---\n");
 	char **split = ft_split("||||cat1||cat2||||cat3||||cat4||", "||");
-    printf("[%s]\n", g_split[0]);
-    printf("[%s]\n", g_split[1]);
-    printf("[%s]\n", g_split[2]);
-    printf("[%s]\n", g_split[3]);
-    printf("[%s]\n", g_split[4]);
+    printf("[%s]\n", split[0]);
+    printf("[%s]\n", split[1]);
+    printf("[%s]\n", split[2]);
+    printf("[%s]\n", split[3]);
+    printf("[%s]\n", split[4]);
+	char **split1 = ft_split("||||cat1||cat2||||cat3||||cat4||", "");
+    printf("[%s]\n", split1[0]);
+    printf("[%s]\n", split1[1]);
+    printf("[%s]\n", split1[2]);
 }

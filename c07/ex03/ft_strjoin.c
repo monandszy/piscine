@@ -6,11 +6,12 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 11:31:49 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/12 11:43:41 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/12 12:21:18 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 
 int	calc_s(int size, char **strs)
 {
@@ -37,7 +38,7 @@ char	*empty(void)
 {
 	char	*con;
 
-	con = (char *) malloc(1 * sizeof(char));
+	con = (char *) malloc(2 * sizeof(char));
 	con[0] = '\0';
 	return (con);
 }
@@ -52,7 +53,8 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	if (size <= 0)
 		return (empty());
 	s = calc_s(size, strs);
-	con = malloc((s + size) * sizeof(char));
+	printf("s%d", s);
+	con = (char*) malloc((s + size) * sizeof(char));
 	i = 0;
 	s = 0;
 	while (i < size)
@@ -64,9 +66,10 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 			s++;
 			j++;
 		}
-		con[s] = *sep;
-		s++;
 		i++;
+		if (i != size)
+			con[s] = *sep;
+		s++;
 	}
-	return (con);
+	return (con); 
 }
