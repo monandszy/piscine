@@ -6,7 +6,7 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 11:31:49 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/12 12:35:19 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/12 12:48:20 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,17 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	int		i;
 	int		j;
 	int		s;
+	int		ss;
 	char	*con;
 
+	ss = 0;
+	while (sep[ss])
+		ss++;
 	if (size <= 0)
 		return (empty());
 	s = calc_s(size, strs);
 	printf("s%d", s);
-	con = (char*) malloc((s + size) * sizeof(char));
+	con = (char*) malloc((s + size + (ss*size)) * sizeof(char));
 	i = 0;
 	s = 0;
 	while (i < size)
@@ -71,12 +75,12 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 		if (i != size)
 		{
 			while (sep[j])
-			{
+			{	
 				con[s] = sep[j];
 				j++;
+				s++;
 			}
 		}
-		s++;
 	}
 	return (con); 
 }

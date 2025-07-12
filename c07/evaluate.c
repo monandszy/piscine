@@ -59,7 +59,7 @@ int main(void)
 
 	printf("---testing ex03\n");
 	char *strs[] = {"cat", "in", "a", "cup"};
-	printf("%s\n", ft_strjoin(4, strs, " "));
+	printf("%s\n", ft_strjoin(4, strs, " ,,,,"));
 	free(ft_strjoin(-5, strs, " "));
 
 	printf("---testing ex05---\n");
