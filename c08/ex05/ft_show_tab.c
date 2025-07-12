@@ -6,7 +6,7 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:36:33 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/12 14:41:06 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/12 14:42:30 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	ft_show_tab(struct s_stock_str *par)
 	}
 }
 
-int	main(void)
+/* int	main(void)
 {
 	char				*av[4];
 	struct s_stock_str	*out;
@@ -85,4 +85,4 @@ int	main(void)
 	av[3] = "cat4";
 	out = ft_strs_to_tab(4, av);
 	ft_show_tab(out);
-}
+} */
