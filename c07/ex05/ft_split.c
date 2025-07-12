@@ -6,7 +6,7 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:59:22 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/12 12:41:33 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/12 13:03:13 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,23 @@ void	c_fill(int i, int j, int s)
 	}
 }
 
+void	something(void)
+{
+	int	c;
+
+	c = 0;
+	g_split = (char **) malloc((2) * sizeof(char *));
+	while (g_str[c])
+		c++;
+	g_split[0] = (char *) malloc((c + 1) * sizeof(char *));
+	c = 0;
+	while (g_str[c])
+	{
+		g_split[0][c] = g_str[c];
+		c++;
+	}
+}
+
 char	**ft_split(char *str, char *charset)
 {
 	int	c;
@@ -97,24 +114,14 @@ char	**ft_split(char *str, char *charset)
 		g_s_size++;
 	g_str = str;
 	g_charset = charset;
-	c = 0;
-//	if (g_c_size == 0 && g_c_size == 0)
-//		return ();
+	if (g_c_size == 0 && g_c_size == 0)
+		return (NULL);
 	if (g_c_size == 0)
 	{
-		g_split = (char **) malloc((2) * sizeof(char *));
-		while (str[c])
-			c++;
-		g_split[0] = (char *) malloc((c + 1) * sizeof(char *));
-		c = 0;
-		while (str[c])
-		{
-			g_split[0][c] = str[c];
-			c++;
-		}
+		something();
 		return (g_split);
 	}
-	else 
+	else
 		c = c_splitters(0, 0, 0, 0);
 	g_split = (char **) malloc((c + 1) * sizeof(char *));
 	g_c = 0;

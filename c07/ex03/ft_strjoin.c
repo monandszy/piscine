@@ -6,14 +6,17 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 11:31:49 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/12 12:48:20 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/12 12:58:14 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
-int	calc_s(int size, char **strs)
+char	**g_strs;
+char	*g_sep;
+int		g_size;
+
+int	calc_s(void)
 {
 	int	i;
 	int	j;
@@ -21,10 +24,10 @@ int	calc_s(int size, char **strs)
 
 	s = 0;
 	i = 0;
-	while (i < size)
+	while (i < g_size)
 	{
 		j = 0;
-		while (strs[i][j])
+		while (g_strs[i][j])
 		{
 			s++;
 			j++;
@@ -43,44 +46,47 @@ char	*empty(void)
 	return (con);
 }
 
-char	*ft_strjoin(int size, char **strs, char *sep)
+char	*iterate(char *con, int i, int j, int s)
 {
-	int		i;
-	int		j;
-	int		s;
-	int		ss;
-	char	*con;
-
-	ss = 0;
-	while (sep[ss])
-		ss++;
-	if (size <= 0)
-		return (empty());
-	s = calc_s(size, strs);
-	printf("s%d", s);
-	con = (char*) malloc((s + size + (ss*size)) * sizeof(char));
-	i = 0;
-	s = 0;
-	while (i < size)
+	while (i < g_size)
 	{
 		j = 0;
-		while (strs[i][j])
+		while (g_strs[i][j])
 		{
-			con[s] = strs[i][j];
+			con[s] = g_strs[i][j];
 			s++;
 			j++;
 		}
 		i++;
 		j = 0;
-		if (i != size)
+		if (i != g_size)
 		{
-			while (sep[j])
-			{	
-				con[s] = sep[j];
+			while (g_sep[j])
+			{
+				con[s] = g_sep[j];
 				j++;
 				s++;
 			}
 		}
 	}
-	return (con); 
+	return (con);
+}
+
+char	*ft_strjoin(int size, char **strs, char *sep)
+{
+	int		s;
+	int		ss;
+	char	*con;
+
+	g_strs = strs;
+	g_sep = sep;
+	g_size = size;
+	ss = 0;
+	while (g_sep[ss])
+		ss++;
+	if (g_size <= 0)
+		return (empty());
+	s = calc_s();
+	con = (char *) malloc((s + g_size + (ss * g_size)) * sizeof(char));
+	return (iterate(con, 0, 0, 0));
 }
