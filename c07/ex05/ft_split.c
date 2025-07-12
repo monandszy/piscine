@@ -6,7 +6,7 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:59:22 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/10 17:39:18 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/12 11:29:59 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ int	c_splitters(int i, int j, int s, int c)
 			s = 0;
 			c = c + 1;
 		}
-		if	(g_str[i] == g_charset[j] && i != 0)
+		if (g_str[i] == g_charset[j] && i != 0)
 			j++;
 		else
 		{
 			j = 0;
-			if	(g_str[i] == g_charset[j])
+			if (g_str[i] == g_charset[j])
 				j++;
 		}
 		i++;
@@ -71,12 +71,12 @@ void	c_fill(int i, int j, int s)
 			j = 0;
 			start = &g_str[i];
 		}
-		if	(g_str[i] == g_charset[j])
+		if (g_str[i] == g_charset[j])
 			j++;
 		else
 		{
 			j = 0;
-			if	(g_str[i] == g_charset[j])
+			if (g_str[i] == g_charset[j])
 				j++;
 		}
 		s++;
@@ -86,8 +86,7 @@ void	c_fill(int i, int j, int s)
 
 char	**ft_split(char *str, char *charset)
 {
-
-	int		c;
+	int	c;
 
 	g_c_size = 0;
 	while (charset[g_c_size])

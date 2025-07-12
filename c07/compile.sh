@@ -26,9 +26,9 @@ rm -rf ex03.o
 cd ..
 
 cd ex04
-cc -c -Wall -Wextra -Werror ft_convert_base.c ft_convert_base2.c -o ex04.o
+cc -c -Wall -Wextra -Werror ft_convert_base.c ft_convert_base2.c 
 norminette -R CheckForbiddenSourceHeader
-rm -rf ex04.o
+rm -rf ft_convert_base.o ft_convert_base2.o
 cd ..
 cc 4main.c ex04/ft_convert_base.c ex04/ft_convert_base2.c -o 4main.o
 ./4main.o
