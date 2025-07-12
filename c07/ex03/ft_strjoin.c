@@ -6,7 +6,7 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 11:31:49 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/12 12:58:14 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/12 16:41:17 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,36 +16,6 @@ char	**g_strs;
 char	*g_sep;
 int		g_size;
 
-int	calc_s(void)
-{
-	int	i;
-	int	j;
-	int	s;
-
-	s = 0;
-	i = 0;
-	while (i < g_size)
-	{
-		j = 0;
-		while (g_strs[i][j])
-		{
-			s++;
-			j++;
-		}
-		i++;
-	}
-	return (s);
-}
-
-char	*empty(void)
-{
-	char	*con;
-
-	con = (char *) malloc(2 * sizeof(char));
-	con[0] = '\0';
-	return (con);
-}
-
 char	*iterate(char *con, int i, int j, int s)
 {
 	while (i < g_size)
@@ -54,39 +24,64 @@ char	*iterate(char *con, int i, int j, int s)
 		while (g_strs[i][j])
 		{
 			con[s] = g_strs[i][j];
+			j++;
+			s++;
+		}
+		j = 0;
+		while (g_sep[j] && i != g_size - 1)
+		{
+			con[s] = g_sep[j];
 			s++;
 			j++;
 		}
 		i++;
-		j = 0;
-		if (i != g_size)
-		{
-			while (g_sep[j])
-			{
-				con[s] = g_sep[j];
-				j++;
-				s++;
-			}
-		}
 	}
+	con[s] = '\0';
+	return (con);
+}
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+char	*allocate(void)
+{
+	int		i;
+	int		sum;
+	char	*con;
+
+	sum = 0;
+	i = 0;
+	if (g_size <= 0)
+		sum = 1;
+	else
+	{
+		while (i < g_size)
+		{
+			sum += ft_strlen(g_strs[i]);
+			i++;
+		}
+		sum += ft_strlen(g_sep) * g_size - 1;
+	}
+	con = (char *) malloc(sum * sizeof(char));
+	if (con == NULL)
+		return (0);
 	return (con);
 }
 
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
-	int		s;
-	int		ss;
 	char	*con;
 
 	g_strs = strs;
 	g_sep = sep;
 	g_size = size;
-	ss = 0;
-	while (g_sep[ss])
-		ss++;
-	if (g_size <= 0)
-		return (empty());
-	s = calc_s();
-	con = (char *) malloc((s + g_size + (ss * g_size)) * sizeof(char));
+	con = allocate();
 	return (iterate(con, 0, 0, 0));
 }
