@@ -6,18 +6,17 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:02:55 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/11 12:26:50 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/12 11:36:53 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_POINT_H
 # define FT_POINT_H
 
-
-struct t_point
+typedef struct s_point
 {
 	int	x;
 	int	y;
-};
+}	t_point;
 
 #endif
