@@ -6,13 +6,12 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 13:29:20 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/12 14:41:10 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/14 12:59:32 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-//#include <stdio.h>
-//#include "../ft_stock_str.h"
+#include "ft_stock_str.h"
 
 int	ft_strlcpy(char *dest, char *src, int size)
 {

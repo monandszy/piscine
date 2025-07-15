@@ -6,7 +6,7 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 11:30:38 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/11 12:01:43 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/14 13:01:27 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 typedef int	t_bool;
 
-# define EVEN(nbr) (nbr % 2 ? TRUE : FALSE)
+# define EVEN(nbr) (nbr % 2 == 0)
 # define TRUE 1
 # define FALSE 0
 # define EVEN_MSG "I have an even number of arguments\n"
