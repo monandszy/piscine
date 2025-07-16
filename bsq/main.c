@@ -6,7 +6,7 @@
 /*   By: sandrzej <sandrzej@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 00:31:37 by sandrzej          #+#    #+#             */
-/*   Updated: 2025/07/15 15:03:29 by sandrzej         ###   ########.fr       */
+/*   Updated: 2025/07/15 16:45:44 by sandrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,49 +15,71 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-char	**g_matrix;
+const int g_x_size;
+const int g_y_size;
 
-int calculate_size(int col_size, int row_size, int x, int y);
-int find_max(int col_size, int row_size, int *m_x, int *m_y);
-void fill_max(int x, int y, int size);
-int write_max(int col_size, int row_size, int fd);
-void    print_matrix(int row_size);
+int		calculate_size(int col_size, int row_size, int x, int y);
+int		find_max(int col_size, int row_size, int *m_x, int *m_y);
+void	fill_max(int x, int y, int size);
+int		write_max(int col_size, int row_size, int fd);
+void	print_imatrix(int row_size);
 
-int	process_file(int *i_col_size, int *i_row_size, int fd)
+void process_encoding(int bytes_read)
+{
+	char tmp[1];
+
+	while (bytes_read > 0)
+	{
+		if (tmp >= '0' && tmp <= '9')
+		{
+			bytes_read = read(fd, tmp, sizeof(tmp));
+			continue;
+		}
+	}
+	while (tmp >= '0' && tmp <= '9')
+	{
+	}
+	if (!(bytes_read > 0))
+		return(1);
+	while ()
+	bytes_read = read(fd, &tmp, sizeof(tmp));
+		if (bytes_
+}
+
+int	process_file(int fd)
 {
 	char	tmp[1];
 	int		bytes_read;
-	int		total_size;
-	int		row_size;
-	int		tmp_row_size;
+	int		file_size;
+	int		x_size;
+	int		tmp_x_size;
 
 	bytes_read = read(fd, tmp, sizeof(tmp));
-	total_size = 0;
-	row_size = 0;
-	tmp_row_size = 0;
+	file_size = 0;
+	x_size = 0;
+	tmp_x_size = 0;
+	process_encoding(bytes_read);
 	while (bytes_read > 0)
 	{
-		row_size++;
-		if (row_size < 0)
-			return (1);
+		x_size++;
 		if (*tmp != '.' && *tmp != 'o' && *tmp != '\n')
 			return (1);
 		if (*tmp == '\n')
 		{
-			tmp_row_size = row_size;
-			if (row_size != tmp_row_size)
+			*tmp_x_size = x_size;
+			if (x_size != *tmp_x_size)
 				return (1);
-			total_size += row_size;
-			row_size = 0;
-			if (total_size < 0)
+			file_size += x_size;
+			x_size = 0;
+			if (file_size < 0)
 				return (1);
 		}
 		bytes_read = read(fd, tmp, sizeof(tmp));
 	}
-	if (tmp_row_size <= 0)
+	if (tmp_x_size <= 0)
 		return (1);
-	*i_row_size = tmp_row_size;
-	*i_col_size = total_size / tmp_row_size;
+	g_x_size = tmp_x_size;
+	g_y_size = file_size / tmp_x_size;
 	return (0);
 }
 
@@ -92,6 +114,8 @@ int process_arg(char *filename)
 	int		fd;
 	int		col_size;
 	int		row_size;
+	int		m_x;
+	int		m_y;
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1 || process_file(&col_size, &row_size, fd) == 1)
@@ -102,10 +126,8 @@ int process_arg(char *filename)
 		|| to_matrix(col_size, row_size, fd) == 1)
 		return (1);
 	close(fd);
-	fd = open(filename, O_WRONLY | O_TRUNC);
-	if (fd == -1 || write_max(col_size, row_size, fd) == 1)
-		return (1);
-	close(fd);
+
+    fill_max(m_x, m_y, find_max(col_size, row_size, &m_x, &m_y)); 
 	print_matrix(row_size);
 	return (0);
 }
